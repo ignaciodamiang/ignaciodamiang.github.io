@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import Navbar from "./Navbar";
-import PropTypes from "prop-types";
-import NProgress from "nprogress";
-import nProgress from "nprogress";
-import classNames from "classnames";
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Navbar from './Navbar';
+import PropTypes from 'prop-types';
+import NProgress from 'nprogress';
+import nProgress from 'nprogress';
+import classNames from 'classnames';
 
 const Layout = ({ children, title, footer = true, dark = false }) => {
   const router = useRouter();
@@ -15,24 +15,24 @@ const Layout = ({ children, title, footer = true, dark = false }) => {
       NProgress.start();
     };
 
-    router.events.on("routeChangeStart", handleRouteChange);
+    router.events.on('routeChangeStart', handleRouteChange);
 
-    router.events.on("routeChangeComplete", () => NProgress.done());
+    router.events.on('routeChangeComplete', () => NProgress.done());
 
-    router.events.on("routeChangeError", () => nProgress.done());
+    router.events.on('routeChangeError', () => nProgress.done());
 
     return () => {
-      router.events.off("routeChangeStart", handleRouteChange);
+      router.events.off('routeChangeStart', handleRouteChange);
     };
   }, []);
 
   return (
-    <div className={classNames({ "bg-dark": dark, "bg-light": !dark })}>
+    <div className={classNames({ 'bg-dark': dark, 'bg-light': !dark })}>
       <Navbar />
-      <main className="container py-4">
+      <main className='container py-4'>
         {/* Title */}
         {title && (
-          <h1 className={classNames("text-center", { "text-light": dark })}>
+          <h1 className={classNames('text-center', { 'text-light': dark })}>
             {title}
           </h1>
         )}
@@ -42,9 +42,9 @@ const Layout = ({ children, title, footer = true, dark = false }) => {
       </main>
 
       {footer && (
-        <footer className="bg-dark text-light text-center">
-          <div className="container p-4">
-            <h1>&copy; Ryan Ray Portfolio</h1>
+        <footer className='bg-dark text-light text-center'>
+          <div className='container p-4'>
+            <h1>&copy; Ignacio Damián González</h1>
             <p>2000 - {new Date().getFullYear()}</p>
             <p>All rights Reserved.</p>
           </div>
