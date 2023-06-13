@@ -1,5 +1,5 @@
-import Layout from "../components/Layout";
-import Error from "./_error";
+import Layout from '../components/Layout';
+import Error from './_error';
 
 const Github = ({ user, statusCode }) => {
   if (statusCode) {
@@ -7,24 +7,24 @@ const Github = ({ user, statusCode }) => {
   }
 
   return (
-    <Layout title="My Github" footer={false} dark>
-      <div className="row">
-        <div className="col-md-4 offset-md-4">
-          <div className="card card-body text-center">
+    <Layout title='My Github' footer={false} dark>
+      <div className='row'>
+        <div className='col-md-4 offset-md-4'>
+          <div className='card card-body text-center'>
             <h1>{user.name}</h1>
-            <img src={user.avatar_url} alt="" style={{ width: "100%" }} />
+            <img src={user.avatar_url} alt='' style={{ width: '100%' }} />
             <p>{user.bio}</p>
             <a
               href={user.blog}
-              target="_blank"
-              className="btn btn-outline-secondary my-2"
+              target='_blank'
+              className='btn btn-outline-secondary my-2'
             >
               My Blog
             </a>
             <a
               href={user.html_url}
-              target="_blank"
-              className="btn btn-outline-secondary"
+              target='_blank'
+              className='btn btn-outline-secondary'
             >
               Go to Github
             </a>
@@ -37,10 +37,8 @@ const Github = ({ user, statusCode }) => {
 
 Github.proptypes = {};
 
-export async function getServerSideProps() {
-  const res = await fetch(
-    "https://api.github.com/users/fazttech"
-  );
+export async function getStaticProps() {
+  const res = await fetch('https://api.github.com/users/fazttech');
   const data = await res.json();
 
   const statusCode = res.status > 200 ? res.status : false;
@@ -50,6 +48,7 @@ export async function getServerSideProps() {
       user: data,
       statusCode,
     },
+    revalidate: 43200,
   };
 }
 
