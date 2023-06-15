@@ -47,7 +47,7 @@ const Index = () => (
 
     <section className='row'>
       <div className='col-md-4 py-2'>
-        <div className='card bg-light border-white border animate__animated animate__fadeInLeft'>
+        <div className='card bg-light border-success border animate__animated animate__fadeInLeft'>
           <div className='card-body'>
             <h1>Skills</h1>
 
@@ -73,7 +73,7 @@ const Index = () => (
 
       <div className='col-md-8 py-2'>
         {/* Experience */}
-        <div className='card bg-light border-white animate__animated animate__fadeInRight'>
+        <div className='card bg-light border-success animate__animated animate__fadeInRight'>
           <div className='card-body'>
             <h1>Experience</h1>
 
