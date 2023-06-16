@@ -22,17 +22,16 @@ const Index = () => (
               <h1>Ignacio Damián González</h1>
               <h3>Software Engineer and DevOps</h3>
               <p>
-                Soy Técnico en Desarrollo Web recibido en la Universidad de la
-                Matanza, y estudio Ingeniería en Informática en la misma
-                universidad. Vengo usando y estudiando tecnologías como Angular,
-                Symfony, React.js, Node.js, .NET, Spring, Linux, Python, Git,
-                AWS y Kubernetes, entre otras. Soy una persona que trabaja en
-                equipo y aplico tanto como puedo las metodologías ágiles y la
-                filosofía DevOps. Siempre trato de seguir buenas prácticas y me
-                siento cómodo en el rol de full stack. Cuento con capacidad de
-                abstracción y busco lograr una visión estratégica que acompañe
-                los objetivos del negocio para generar soluciones que impacten
-                en el mediano y largo plazo.
+                I am a Web Development Technician graduated from the University
+                of La Matanza, and studying Computer Engineering at the same
+                university. I've been using and studying technologies such as
+                Angular, Symfony, React.js, Node.js, NET, Spring, Linux, Python,
+                Git, AWS and Kubernetes, among others. With my coworkers I try
+                to apply agile methodologies and DevOps philosophy as much as I
+                can. Always try to follow best practices and I am comfortable in
+                a full stack role. I have the ability to abstract and strive to
+                achieve a strategic vision that supports the business's goals to
+                create solutions that have a medium and long-term impact.
               </p>
               <Link href='/hireme'>
                 <a className='btn btn-outline-light'>Hire Me</a>
@@ -79,18 +78,13 @@ const Index = () => (
 
             <ul>
               {/* List Item Experience */}
-              {experiences.map(({ title, from, to }, index) => (
+              {experiences.map(({ title, from, to, description }, index) => (
                 <li key={index}>
                   <h3>{title}</h3>
                   <h5>
                     {from} {to ? `- ${to}` : '- current'}
                   </h5>
-                  <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Sint excepturi ea explicabo. Illum suscipit illo, porro
-                    quisquam voluptatem officiis fugiat vel animi aliquam
-                    inventore rem. Quo laudantium temporibus cupiditate. Aut?
-                  </p>
+                  <p>{description}</p>
                 </li>
               ))}
             </ul>
