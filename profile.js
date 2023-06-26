@@ -27,6 +27,30 @@ export const skills = [
     skill: 'Machine Learning',
     percentage: 70,
   },
+  {
+    skill: 'Machine Learning',
+    percentage: 70,
+  },
+  {
+    skill: 'Machine Learning',
+    percentage: 70,
+  },
+  {
+    skill: 'Machine Learning',
+    percentage: 70,
+  },
+  {
+    skill: 'Machine Learning',
+    percentage: 70,
+  },
+  {
+    skill: 'Machine Learning',
+    percentage: 70,
+  },
+  {
+    skill: 'Machine Learning',
+    percentage: 70,
+  },
 ];
 
 export const experiences = [

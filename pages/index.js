@@ -1,4 +1,5 @@
 import Layout from '../components/Layout';
+import MyPresentation from '../components/MyPresentation';
 import Link from 'next/link';
 
 import { skills, experiences, projects } from '../profile';
@@ -8,6 +9,7 @@ import Modal from 'react-modal';
 
 const Index = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [skillsModalIsOpen, setSkillsModalIsOpen] = useState(false);
 
   useEffect(() => {
     Modal.setAppElement('#__next');
@@ -18,54 +20,24 @@ const Index = () => {
       {/* Header Card */}
       <header className='row'>
         <div className='col-md-12'>
-          <div className='card card-body bg-secondary border border-none text-light animate__animated animate__fadeIn'>
-            <div className='row'>
-              <div className='col-md-4'>
-                <img
-                  src='/pay8pgm0c8ok8k4k.jpg'
-                  alt=''
-                  // center vertically and horizontally
-                  className='img-fluid mx-auto rounded-circle border border-light'
-                />
-              </div>
-              <div className='col-md-8'>
-                <h1>Ignacio Damián González</h1>
-                <h3>Software Engineer and DevOps</h3>
-                <p>
-                  I am a Web Development Technician graduated from the
-                  University of La Matanza, and studying Computer Engineering at
-                  the same university. I've been using and studying technologies
-                  such as Angular, Symfony, React.js, Node.js, NET, Spring,
-                  Linux, Python, Git, AWS and Kubernetes, among others. With my
-                  coworkers I try to apply agile methodologies and DevOps
-                  philosophy as much as I can. Always try to follow best
-                  practices and I am comfortable in a full stack role. I have
-                  the ability to abstract and strive to achieve a strategic
-                  vision that supports the business's goals to create solutions
-                  that have a medium and long-term impact.
-                </p>
-                <Link href='/hireme'>
-                  <a className='btn btn-outline-light'>Hire Me</a>
-                </Link>
-              </div>
-            </div>
-          </div>
+          <MyPresentation />
         </div>
       </header>
 
       {/* Second section */}
 
       <section className='row'>
+        {/* Skills section */}
         <div className='col-md-4 py-2'>
           <div className='card bg-light border-success border animate__animated animate__fadeInLeft'>
             <div className='card-body'>
               <h1>Skills</h1>
 
-              {/* Skill Progress  */}
-              {skills.map(({ skill, percentage }, i) => (
+              {/* Skill Progress */}
+              {skills.slice(0, 8).map(({ skill, percentage }, i) => (
                 <div className='py-3' key={i}>
                   <h5>{skill}</h5>
-                  <div className='progress '>
+                  <div className='progress'>
                     <div
                       className='progress-bar'
                       role='progressbar'
@@ -77,12 +49,105 @@ const Index = () => {
                   </div>
                 </div>
               ))}
+              <button
+                className='btn btn-light'
+                onClick={() => setSkillsModalIsOpen(true)}
+              >
+                Show More
+              </button>
+              <Modal
+                isOpen={skillsModalIsOpen}
+                onRequestClose={() => setSkillsModalIsOpen(false)}
+                style={{
+                  content: {
+                    width: '66vw',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                  },
+                }}
+              >
+                <h2>All Skills</h2>
+                <div className='row p-4'>
+                  <div className='col-md-4'>
+                    <ul className='list-unstyled'>
+                      {skills
+                        .slice(0, Math.floor(skills.length / 3))
+                        .map(({ skill, percentage }, index) => (
+                          <li key={index}>
+                            <h3>{skill}</h3>
+                            <div className='progress'>
+                              <div
+                                className='progress-bar'
+                                role='progressbar'
+                                style={{ width: `${percentage}%` }}
+                                aria-valuenow='50'
+                                aria-valuemin='0'
+                                aria-valuemax='100'
+                              ></div>
+                            </div>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                  <div className='col-md-4'>
+                    <ul className='list-unstyled'>
+                      {skills
+                        .slice(
+                          Math.floor(skills.length / 3),
+                          Math.floor((skills.length * 2) / 3)
+                        )
+                        .map(({ skill, percentage }, index) => (
+                          <li key={index}>
+                            <h3>{skill}</h3>
+                            <div className='progress'>
+                              <div
+                                className='progress-bar'
+                                role='progressbar'
+                                style={{ width: `${percentage}%` }}
+                                aria-valuenow='50'
+                                aria-valuemin='0'
+                                aria-valuemax='100'
+                              ></div>
+                            </div>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                  <div className='col-md-4'>
+                    <ul className='list-unstyled'>
+                      {skills
+                        .slice(Math.floor((skills.length * 2) / 3))
+                        .map(({ skill, percentage }, index) => (
+                          <li key={index}>
+                            <h3>{skill}</h3>
+                            <div className='progress'>
+                              <div
+                                className='progress-bar'
+                                role='progressbar'
+                                style={{ width: `${percentage}%` }}
+                                aria-valuenow='50'
+                                aria-valuemin='0'
+                                aria-valuemax='100'
+                              ></div>
+                            </div>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                </div>
+                <button
+                  className='btn btn-light'
+                  onClick={() => setSkillsModalIsOpen(false)}
+                >
+                  Close
+                </button>
+              </Modal>
             </div>
           </div>
         </div>
 
+        {/* Experience */}
         <div className='col-md-8 py-2'>
-          {/* Experience */}
           <div className='card bg-light border-success animate__animated animate__fadeInRight'>
             <div className='card-body'>
               <h1>Experience</h1>
@@ -102,7 +167,7 @@ const Index = () => {
                   ))}
               </ul>
               <button
-                class='btn btn-light'
+                className='btn btn-light'
                 onClick={() => setModalIsOpen(true)}
               >
                 Show More
@@ -151,6 +216,7 @@ const Index = () => {
           </div>
         </div>
       </section>
+
       {/* Porfolio */}
       <section>
         <div className='row'>
